@@ -58,6 +58,22 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+int String::getSize()
+{
+  return size;
+}
+
+
+int String::getCapacity()
+{
+  return capacity;
+}
+
+
+char* String::getData()
+{
+  return data;
+}
 
 // ===========================================================================
 //                                Protected Methods
