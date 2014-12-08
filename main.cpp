@@ -41,8 +41,7 @@ int main(int argc, char* argv[])
   String test;
   String testi(2);
 
-
-  printf("Hello World !\n");
+  printf("%d\n", testi.getSize());
 
   return 0;
 }

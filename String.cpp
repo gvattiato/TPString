@@ -38,6 +38,7 @@ String::String(void)
 {
 	size = 0;
 	data = NULL;
+	capacity = 0;
 }
 
 
@@ -46,6 +47,7 @@ String::String(int a_size)
 {
 	size = a_size;
 	data = new char[a_size];
+	capacity = a_size;     //to be determined
 }
 
 // ===========================================================================
