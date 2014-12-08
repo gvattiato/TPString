@@ -41,7 +41,10 @@ int main(int argc, char* argv[])
   String test;
   String testi(2);
 
+  String audrey("Audrey",6);
+
   printf("%d\n", testi.getSize());
+  printf("%c\n", (audrey.getData())[2]);
 
   return 0;
 }
