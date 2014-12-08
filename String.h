@@ -51,6 +51,9 @@ class String
 
     String(const char* s, int s_size);
 
+    
+
+
     // =======================================================================
     //                                Destructor
     // =======================================================================
@@ -93,13 +96,13 @@ class String
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };*/
+    };
 
     String(const String &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };
+    };*/
 
 
     // =======================================================================
