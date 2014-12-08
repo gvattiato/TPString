@@ -43,8 +43,19 @@ int main(int argc, char* argv[])
 
   String audrey("Audrey",6);
 
-  printf("%d\n", testi.getSize());
+  /*printf("%d\n", testi.getSize());
   printf("%c\n", (audrey.getData())[2]);
+
+  int maxsize = audrey.max_size();
+
+  printf("valeur max %d\n", maxsize);
+  printf("position 3 %c\n", audrey.at(3));*/
+
+  /*audrey.print();
+  audrey.resize(8);
+  audrey.print();*/
+
+  printf("Ouais ça compile gros ! :) \n");
 
   return 0;
 }

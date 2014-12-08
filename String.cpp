@@ -76,6 +76,10 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+
+
+// rajouter une methode qui affiche la String ?
+
 int String::getSize()
 {
   return size;
@@ -92,6 +96,66 @@ char* String::getData()
 {
   return data;
 }
+
+int String::length()
+{
+
+  return size;     // peux prendre "toto" en paramètre par exemple ?
+
+}
+
+
+int String::max_size()
+{
+  return MAX_SIZE;
+}
+
+
+char String::at(int position)
+{
+  return data[position -1];
+}
+
+
+//resize the String. If the new size is lower, remove the characters beyond the nth. If bigger, add (new_size - size) null characters
+void String::resize(int new_size)
+{
+  if(new_size < size)
+    {
+      size = new_size;
+
+      for(int i = new_size +1; i<size; i++)
+      {
+      	data[i]='0';
+      }
+
+    }
+  else if(new_size > size)
+    {
+      size = new_size;
+
+      for(int i=size+1; i<new_size; i++)
+      {
+      	data[i]=0;
+      }
+
+    }
+	
+
+}
+
+
+void String::print()
+{
+	for(int i=0; i<size; i++)
+	  {
+	  	printf("%c", data[i]);
+	  }
+
+	 printf("\n");
+}
+
+
 
 // ===========================================================================
 //                                Protected Methods
