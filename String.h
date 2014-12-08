@@ -57,6 +57,10 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
+    int getSize();
+    int getCapacity();
+    char* getData();
+
 
     // =======================================================================
     //                            Accessors: setters
@@ -88,7 +92,7 @@ class String
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
     };*/
-      
+
     String(const String &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
@@ -104,7 +108,7 @@ class String
     //                             Protected Attributes
     // =======================================================================
     static const int MAX_SIZE;
-    char* s;
+    char* data;
     int size;
     int capacity;
 

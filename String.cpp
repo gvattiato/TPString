@@ -37,7 +37,7 @@
 String::String(void)
 {
 	size = 0;
-	s = NULL;
+	data = NULL;
 }
 
 
@@ -45,7 +45,7 @@ String::String(void)
 String::String(int a_size)
 {
 	size = a_size;
-	s = new char[a_size];
+	data = new char[a_size];
 }
 
 // ===========================================================================
