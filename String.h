@@ -62,9 +62,9 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    int getSize();
-    int getCapacity();
-    char* getData();
+    int getSize() const;
+    int getCapacity() const;
+    char* getData() const;
 
 
     // =======================================================================
@@ -79,11 +79,16 @@ class String
     //                              Public Methods
     // =======================================================================
 
-    int length();
-    int max_size();
-    char at(int position);
-    void resize(int new_size);
+
+    size_t length() const;
+    size_t max_size() const;
+    char& at(int position);
+    void resize(size_t new_size);
+    //display the String (the data)
     void print();
+    String& operator+= (char c);
+
+   
 
     // =======================================================================
     //                             Public Attributes

@@ -80,67 +80,105 @@ String::~String(void)
 
 // rajouter une methode qui affiche la String ?
 
-int String::getSize()
+int String::getSize() const
 {
   return size;
 }
 
 
-int String::getCapacity()
+int String::getCapacity() const
 {
   return capacity;
 }
 
 
-char* String::getData()
+char* String::getData() const
 {
   return data;
 }
 
-int String::length()
+size_t String::length() const
 {
+  return size*8*sizeof(char);     
+}
 
-  return size;     // peux prendre "toto" en paramètre par exemple ?
-
+/*Returns the maximum length the string can reach.
+This is the maximum potential length the string can reach due to known system or 
+library implementation limitations*/
+size_t String::max_size() const
+{
+  return MAX_SIZE*8*sizeof(char);
 }
 
 
-int String::max_size()
-{
-  return MAX_SIZE;
-}
-
-
-char String::at(int position)
+char& String::at(int position) 
 {
   return data[position -1];
 }
 
 
 //resize the String. If the new size is lower, remove the characters beyond the nth. If bigger, add (new_size - size) null characters
-void String::resize(int new_size)
+void String::resize(size_t new_size)
 {
-  if(new_size < size)
+  int new_s = new_size/(8*sizeof(char));
+
+  if(new_s < size)
     {
-      size = new_size;
+
+      size = new_s;
 
       for(int i = new_size +1; i<size; i++)
       {
-      	data[i]='0';
+      	data[i]='\0';
       }
 
     }
-  else if(new_size > size)
+  else if(new_s > size)
     {
-      size = new_size;
+      //create a pointer on a table of char to stock the value of data (because we are going to delete it)
+      char* inter = new char[size];
 
-      for(int i=size+1; i<new_size; i++)
+      printf("inter\n");
+      for(int i=0; i<size; i++)
       {
-      	data[i]=0;
+        inter[i]=data[i];
+        printf("%c %c\n", inter[i], data[i]);
       }
+
+      printf("\n");
+      printf("%p\n", data);
+
+      delete [] data;
+      
+      data= NULL;
+     
+
+  
+      data = new char[new_s];
+
+      for(int i=0; i<size; i++)
+      {
+        data[i] = inter[i];
+        printf("%c\n",data[i]);
+      }
+
+      for(int i=size; i<new_s; i++)
+      {
+      	data[i]='\0';
+      }
+      size = new_s;
 
     }
 	
+
+}
+
+String& String::operator+= (char c)
+{
+  size += 1;
+  data[size] = c;
+
+  return String;
 
 }
 
