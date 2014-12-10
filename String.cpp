@@ -92,12 +92,10 @@ char* String::c_str()
 // Erases the contents of the string, which becomes an empty string with a length of 0 characters)
 void String::clear()
 {
-  printf("So far so good!\n");
-  printf("ERROR:\t\%s\t\%d",__FILE__,__LINE__);
-  //delete [] data;
-  data = NULL;		// ??? /!\ MEMORY LEAK /!\ ???
+  delete data;	// ??? /!\ MEMORY LEAK /!\ ???
   size = 0;
   capacity = 0;
+  data = NULL;
 }
 
 /*
@@ -210,6 +208,26 @@ void String::resize(size_t new_size)
   return String;
 
 }*/
+
+
+
+String& String::operator= (char c)
+{
+  size = 1;
+  data [0] = c;		// ??? /!\ MEMORY LEAK /!\ ???
+  return *this;
+}
+
+
+String& String::operator= (const String& str)
+{
+  size = str.getSize();
+  for (int i=0; i<size; i++)
+    {
+      //data[i] = str.at(i);   // TO BE ADDRESSED !!!!
+    }
+  return *this;
+}
 
 
 void String::print()

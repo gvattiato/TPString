@@ -90,9 +90,9 @@ class String
     //display the String (the data)
     void print();
     String& operator+= (char c);
-
-   
-
+    
+    String& operator= (char c);
+    String& operator= (const String& str);
     // =======================================================================
     //                             Public Attributes
     // =======================================================================

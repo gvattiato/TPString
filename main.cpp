@@ -55,11 +55,14 @@ int main(int argc, char* argv[])
   audrey.resize(8);
   audrey.print();*/
 
+  /*
   String poulet("poulet",6);
   poulet.print();
   poulet.clear();
   poulet.print();
-  printf("poulet.size = %d\n", poulet.getSize());
+  printf("poulet.size = %d\n", poulet.getSize());*/
+
+
 
   printf("Ouais ça compile gros ! :) \n");
 
