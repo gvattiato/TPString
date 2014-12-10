@@ -77,35 +77,8 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 
-// Returns a pointer to an array that contains a null-terminated sequence of characters representing the current value of the string object
-char* String::c_str()
-{
-  char* c_data = new char[size+1];
-  for(int i=0; i<size; i++)
-    {
-      c_data[i] = data[i];
-    }
-  c_data[size] = '\0';
-  return c_data;
-}
 
-// Erases the contents of the string, which becomes an empty string (with a length of 0 characters)
-void String::clear()
-{
-  printf("So far so good!\n");
-  printf("ERROR:\t\%s\t\%d",__FILE__,__LINE__);
-  //delete [] data;
-  data = NULL; //??? /!\ MEMORY LEAK /!\ ???
-  size = 0;
-  capacity = 0;
-}
-
-/*
-size_t String::size()
-{
-  return (size*8*sizeof(char));
-}*/
-
+// rajouter une methode qui affiche la String ?
 
 int String::getSize() const
 {
@@ -200,14 +173,14 @@ void String::resize(size_t new_size)
 
 }
 
-String& String::operator+= (char c)
+/*String& String::operator+= (char c)
 {
   size += 1;
   data[size] = c;
 
   return String;
 
-}
+}*/
 
 
 void String::print()
