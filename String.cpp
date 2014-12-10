@@ -202,14 +202,16 @@ void String::resize(size_t new_size)
 
 }
 
-/*String& String::operator+= (char c)
+String& String::operator+(char c)
 {
-  size += 1;
+  
   data[size] = c;
+  printf("%c\n", data[size] );
+  size += 1;
 
-  return String;
+  return *this;
 
-}*/
+}
 
 
 void String::print()
