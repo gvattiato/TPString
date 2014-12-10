@@ -79,6 +79,8 @@ class String
     //                              Public Methods
     // =======================================================================
     char* c_str();
+    void clear();
+    //size_t size();
     int length();
     int max_size();
     char at(int position);
