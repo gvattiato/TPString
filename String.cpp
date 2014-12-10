@@ -11,6 +11,7 @@
 //                                   Libraries
 // ===========================================================================
 
+#include <cstring>
 
 
 // ===========================================================================
@@ -64,6 +65,29 @@ String::String(const char* s, int s_size)
 
 }
 
+
+String::String(char* cstr)
+{
+  int i = 0;
+
+  while (cstr[i]!='\0')
+  {
+    i++;
+  }
+
+  printf("i=%d\n",i );
+
+  size = i;
+  capacity = size;
+
+  memcpy(data, cstr, size);
+
+  for (int i = 0; i < size; ++i)
+  {
+    printf("%c\n", data[i] );
+  }
+
+}
 
 
 // ===========================================================================
@@ -163,13 +187,13 @@ void String::resize(size_t new_size)
   else if(new_s > size)
     {
       //create a pointer on a table of char to stock the value of data (because we are going to delete it)
-      char* inter = new char[size];
+      char* data2 = new char[new_s];
 
       printf("inter\n");
       for(int i=0; i<size; i++)
       {
-        inter[i]=data[i];
-        printf("%c %c\n", inter[i], data[i]);
+        data2[i]=data[i];
+        printf("%c %c\n", data2[i], data[i]);
       }
 
       printf("\n");
@@ -178,21 +202,12 @@ void String::resize(size_t new_size)
       delete [] data;
       
       data= NULL;
-     
-
-  
-      data = new char[new_s];
-
-      for(int i=0; i<size; i++)
-      {
-        data[i] = inter[i];
-        printf("%c\n",data[i]);
-      }
 
       for(int i=size; i<new_s; i++)
       {
-      	data[i]='\0';
+      	data2[i]='\0';
       }
+
       size = new_s;
 
     }
@@ -200,14 +215,16 @@ void String::resize(size_t new_size)
 
 }
 
-/*String& String::operator+= (char c)
+String& String::operator+(char c)
 {
-  size += 1;
+  
   data[size] = c;
+  printf("%c\n", data[size] );
+  size += 1;
 
-  return String;
+  return *this;
 
-}*/
+}
 
 
 
