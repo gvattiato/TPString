@@ -78,6 +78,7 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
+<<<<<<< HEAD
 
 
     size_t length() const;
@@ -85,6 +86,15 @@ class String
     char& at(int position);
     void resize(size_t new_size);
     //display the String (the data)
+=======
+    char* c_str();
+    void clear();
+    //size_t size();
+    int length();
+    int max_size();
+    char at(int position);
+    void resize(int new_size);
+>>>>>>> fd134002671f05abc5d6ba3f74ad0fb14b9528e7
     void print();
     String& operator+= (char c);
 
