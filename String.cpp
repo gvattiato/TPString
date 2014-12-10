@@ -78,7 +78,17 @@ String::~String(void)
 // ===========================================================================
 
 
-// rajouter une methode qui affiche la String ?
+char* String::c_str()
+{
+  c_data = new char[size+2];
+  for(int i=0; i<size; i++)
+  {
+  	c_data = data[i];
+  }
+  c_data[size] = '\';
+  c_data[size+1] = '0';
+  return c_data;
+}
 
 int String::getSize()
 {
