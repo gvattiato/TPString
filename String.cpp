@@ -292,7 +292,7 @@ String& String::operator= (const String& str)
 }
 
 
-/*
+
 
 
 // take a string in "" as parameter or a c_str
@@ -344,7 +344,7 @@ String& String::operator+(const char* s)
 
 
 
-*/
+
 
 
 
