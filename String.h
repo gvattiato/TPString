@@ -87,6 +87,7 @@ class String
     size_t max_size() const;
     char& at(int position);
     void resize(size_t new_size);
+    void resize(size_t new_size, char c);
     char* c_str();
     void clear();
 

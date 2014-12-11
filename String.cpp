@@ -36,6 +36,9 @@ const int String::MAX_SIZE = 1000;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
+
+
+
 String::String(void)
 {
   size = 0;
@@ -44,7 +47,7 @@ String::String(void)
 }
 
 
-
+/*Constructor with the size only in parameter */
 String::String(int a_size)
 {
   size = a_size;
@@ -53,6 +56,7 @@ String::String(int a_size)
 }
 
 
+/*Constructor with a  */
 String::String(const char* s, int s_size)
 {
 
@@ -223,15 +227,14 @@ void String::resize(size_t new_size)
       //create a pointer on a table of char to stock the value of data (because we are going to delete it)
       char* data2 = new char[new_s];
 
-      printf("inter\n");
+      
       for(int i=0; i<size; i++)
       {
         data2[i]=data[i];
         printf("%c %c\n", data2[i], data[i]);
       }
 
-      printf("\n");
-      printf("%p\n", data);
+      
 
       delete [] data;
       
@@ -242,6 +245,7 @@ void String::resize(size_t new_size)
       	data2[i]='\0';
       }
 
+      data = data2; 
       size = new_s;
 
     }
@@ -249,6 +253,53 @@ void String::resize(size_t new_size)
 
 }
 
+
+void String::resize(size_t new_size, char c)
+{
+  int new_s = new_size/(8*sizeof(char));
+
+  if(new_s < capacity)
+    {
+
+      size = new_s;
+
+      for(int i = new_size +1; i<size; i++)
+      {
+        data[i]='\0';
+      }
+
+    }
+  else if(new_s > capacity)
+    {
+      //create a pointer on a table of char to stock the value of data (because we are going to delete it)
+      char* data2 = new char[new_s];
+
+      
+      for(int i=0; i<size; i++)
+      {
+        data2[i]=data[i];
+        printf("%c %c\n", data2[i], data[i]);
+      }
+
+      
+
+      delete [] data;
+      
+      data= NULL;
+
+      for(int i=size; i<new_s; i++)
+      {
+        data2[i]=c;
+      }
+
+      data = data2; 
+      size = new_s;
+      capacity = new_s;
+
+    }
+  
+
+}
 
 
 
@@ -322,7 +373,7 @@ String& String::operator+(const char* s)
     char* s2= new char[size+i];
     memcpy(s2,data,size);
 
-    this->print();
+    //this->print();
     delete[] data;
     data = NULL;
 
