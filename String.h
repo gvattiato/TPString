@@ -82,9 +82,10 @@ class String
     // =======================================================================
 
 
-    size_t Size();
+    size_t Size() const;
     size_t length() const;
     size_t max_size() const;
+    const char& at(int position) const;
     char& at(int position);
     void resize(size_t new_size);
     void resize(size_t new_size, char c);

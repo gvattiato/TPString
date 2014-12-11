@@ -140,7 +140,7 @@ void String::clear()
 
 
 
-size_t String::Size()
+size_t String::Size() const
 {
  return (size*8*sizeof(char));
 }
@@ -197,9 +197,14 @@ size_t String::max_size() const
 
 
 
-char& String::at(int position) 
+const char& String::at(int position) const
 {
-  return data[position -1];
+  return data[position];
+}
+
+char& String::at(int position)
+{
+  return data[position];
 }
 
 
@@ -341,7 +346,7 @@ String& String::operator= (const String& str)
   data = new char[size];
   for (int i=0; i<size; i++)
     {
-      //data[i] = str.at(i);   // TO BE ADDRESSED !!!!
+      data[i] = str.at(i);   // TO BE ADDRESSED !!!!
     }
   return *this;
 }
