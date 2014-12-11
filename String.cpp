@@ -55,6 +55,9 @@ String::String(int a_size)
 
 String::String(const char* s, int s_size)
 {
+
+  data = new char[s_size];
+
   for(int i=0; i<s_size; i++)
   {
   	data[i] = s[i];
@@ -68,6 +71,7 @@ String::String(const char* s, int s_size)
 
 String::String(char* cstr)
 {
+
   int i = 0;
 
   while (cstr[i]!='\0')
@@ -79,6 +83,8 @@ String::String(char* cstr)
 
   size = i;
   capacity = size;
+
+  data = new char[size];
 
   memcpy(data, cstr, size);
 
@@ -227,7 +233,7 @@ void String::resize(size_t new_size)
       printf("\n");
       printf("%p\n", data);
 
-      //delete [] data;
+      delete [] data;
       
       data= NULL;
 
@@ -286,11 +292,11 @@ String& String::operator= (const String& str)
 }
 
 
-
+/*
 
 
 // take a string in "" as parameter or a c_str
-/*String& String::operator+(const char* s)
+String& String::operator+(const char* s)
 {
   int i = 0;
 
@@ -301,7 +307,6 @@ String& String::operator= (const String& str)
 
   //i corresponds to the size of s
 
-  
 
   if(size+i<=capacity)
   {
@@ -318,7 +323,7 @@ String& String::operator= (const String& str)
     memcpy(s2,data,size);
 
     this->print();
-    //delete[] data;
+    delete[] data;
     data = NULL;
 
     for(int j = i; j<size+i; j++)
@@ -337,9 +342,9 @@ String& String::operator= (const String& str)
 
 }
 
+
+
 */
-
-
 
 
 
