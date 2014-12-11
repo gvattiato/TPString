@@ -129,7 +129,7 @@ char* String::c_str()
 // Erases the contents of the string, which becomes an empty string with a length of 0 characters)
 void String::clear()
 {
-  delete data;
+  delete[] data;
   size = 0;
   capacity = 0;
   data = NULL;
@@ -322,8 +322,10 @@ String& String::operator+(char c)
 
 String& String::operator= (char c)
 {
+  delete [] data;
   size = 1;
-  data [0] = c;		// ??? /!\ MEMORY LEAK /!\ ???
+  data = new char[size];
+  data [0] = c;
   return *this;
 }
 
@@ -334,7 +336,9 @@ String& String::operator= (char c)
 
 String& String::operator= (const String& str)
 {
+  delete [] data;
   size = str.getSize();
+  data = new char[size];
   for (int i=0; i<size; i++)
     {
       //data[i] = str.at(i);   // TO BE ADDRESSED !!!!
