@@ -129,7 +129,7 @@ char* String::c_str()
 // Erases the contents of the string, which becomes an empty string with a length of 0 characters)
 void String::clear()
 {
-  delete data;	// ??? /!\ MEMORY LEAK /!\ ???
+  delete data;
   size = 0;
   capacity = 0;
   data = NULL;
@@ -139,11 +139,11 @@ void String::clear()
 
 
 
-/*
-size_t String::size()
+
+size_t String::Size()
 {
  return (size*8*sizeof(char));
-}*/
+}
 
 
 

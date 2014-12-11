@@ -82,7 +82,7 @@ class String
     // =======================================================================
 
 
-
+    size_t Size();
     size_t length() const;
     size_t max_size() const;
     char& at(int position);
