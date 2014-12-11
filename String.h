@@ -46,6 +46,7 @@ class String
     //                               Constructors
     // =======================================================================
     String(void);
+    String(char* cstr);
 
     String(int a_size);
 
@@ -71,6 +72,7 @@ class String
     //                            Accessors: setters
     // =======================================================================
 
+    void setCapacity(int c);
     // =======================================================================
     //                                Operators
     // =======================================================================
@@ -87,12 +89,15 @@ class String
     void resize(size_t new_size);
     char* c_str();
     void clear();
+
     //display the String (the data)
     void print();
-    String& operator+= (char c);
-    
+
+    String& operator+(char c);
+    String& operator+(const char* s);
     String& operator= (char c);
     String& operator= (const String& str);
+
     // =======================================================================
     //                             Public Attributes
     // =======================================================================

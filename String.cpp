@@ -24,7 +24,7 @@
 
 //############################################################################
 //                                                                           #
-//                           Class String                            #
+//                           Class String                                    #
 //                                                                           #
 //############################################################################
 
@@ -113,6 +113,9 @@ char* String::c_str()
   return c_data;
 }
 
+
+
+
 // Erases the contents of the string, which becomes an empty string with a length of 0 characters)
 void String::clear()
 {
@@ -122,6 +125,10 @@ void String::clear()
   data = NULL;
 }
 
+
+
+
+
 /*
 size_t String::size()
 {
@@ -129,12 +136,14 @@ size_t String::size()
 }*/
 
 
-// rajouter une methode qui affiche la String ?
 
 int String::getSize() const
 {
   return size;
 }
+
+
+
 
 
 int String::getCapacity() const
@@ -143,14 +152,27 @@ int String::getCapacity() const
 }
 
 
+
+
 char* String::getData() const
 {
   return data;
 }
 
+
+
+
+
 size_t String::length() const
 {
   return size*8*sizeof(char);     
+}
+
+
+void String::setCapacity(int c)
+{
+  capacity = c;
+
 }
 
 /*Returns the maximum length the string can reach.
@@ -162,10 +184,16 @@ size_t String::max_size() const
 }
 
 
+
+
+
 char& String::at(int position) 
 {
   return data[position -1];
 }
+
+
+
 
 
 //resize the String. If the new size is lower, remove the characters beyond the nth. If bigger, add (new_size - size) null characters
@@ -173,7 +201,7 @@ void String::resize(size_t new_size)
 {
   int new_s = new_size/(8*sizeof(char));
 
-  if(new_s < size)
+  if(new_s < capacity)
     {
 
       size = new_s;
@@ -184,7 +212,7 @@ void String::resize(size_t new_size)
       }
 
     }
-  else if(new_s > size)
+  else if(new_s > capacity)
     {
       //create a pointer on a table of char to stock the value of data (because we are going to delete it)
       char* data2 = new char[new_s];
@@ -199,7 +227,7 @@ void String::resize(size_t new_size)
       printf("\n");
       printf("%p\n", data);
 
-      delete [] data;
+      //delete [] data;
       
       data= NULL;
 
@@ -215,6 +243,10 @@ void String::resize(size_t new_size)
 
 }
 
+
+
+
+
 String& String::operator+(char c)
 {
   
@@ -228,12 +260,19 @@ String& String::operator+(char c)
 
 
 
+
+
+
 String& String::operator= (char c)
 {
   size = 1;
   data [0] = c;		// ??? /!\ MEMORY LEAK /!\ ???
   return *this;
 }
+
+
+
+
 
 
 String& String::operator= (const String& str)
@@ -245,6 +284,63 @@ String& String::operator= (const String& str)
     }
   return *this;
 }
+
+
+
+
+
+// take a string in "" as parameter or a c_str
+/*String& String::operator+(const char* s)
+{
+  int i = 0;
+
+  while (s[i]!='\0')
+  {
+    i++;
+  }
+
+  //i corresponds to the size of s
+
+  
+
+  if(size+i<=capacity)
+  {
+    for(int j = i; j<size+i; j++)
+    {
+      data[j]=s[j-i];
+    }
+
+  }
+
+  else if(size+i>capacity)
+  {
+    char* s2= new char[size+i];
+    memcpy(s2,data,size);
+
+    this->print();
+    //delete[] data;
+    data = NULL;
+
+    for(int j = i; j<size+i; j++)
+    {
+      s2[j]=s[j-i];
+    }
+
+    data = s2;
+
+  }
+
+  size = size + i;
+  capacity = size;
+
+  return *this;
+
+}
+
+*/
+
+
+
 
 
 void String::print()
